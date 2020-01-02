@@ -1,25 +1,21 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import DashboardRoutes from "./DashboardRoutes";
-import Login from "./Login";
-import Register from "./Register";
-import About from "./About";
-import Contact from "./Contact";
-import Home from "./Home";
-import NavBarPublic from "./NavbarPublic";
 import NoMatch from "./NoMatch";
+import Jobs from "./Jobs";
+import Saved from "./Saved";
+import Alerts from "./Alerts";
+import Signin from "./Signin";
+import Signup from "./Signup";
 
 const Routes = () => {
   return (
     <>
-      <Route path="/" component={NavBarPublic} />
       <Switch>
-        <Route path="/" exact render={() => <Home />} />
-        <Route path="/dash" render={() => <DashboardRoutes />} />
-        <Route path="/login" render={() => <Login />} />
-        <Route path="/register" render={() => <Register />} />
-        <Route path="/about" render={() => <About />} />
-        <Route path="/contact" render={() => <Contact />} />
+        <Route path="/" exact component={Jobs} />
+        <Route path="/saved" component={Saved} />
+        <Route path="/alerts" component={Alerts} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/signup" component={Signup} />
         <Route component={NoMatch} />
       </Switch>
     </>
