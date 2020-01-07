@@ -115,10 +115,10 @@ class Signin extends React.Component {
               </Button>
             </div>
 
-            <Grid container justify="flex-end">
+            <Grid container justify="flex-end" style={{ marginTop: 20 }}>
               <Grid item>
                 <Link to="/signin" variant="body2">
-                  Already have an account? Sign in
+                  <i>Already have an account? Sign in</i>
                 </Link>
               </Grid>
             </Grid>

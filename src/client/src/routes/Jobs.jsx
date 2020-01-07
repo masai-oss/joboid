@@ -113,7 +113,7 @@ export default function Jobs() {
       <Home />
       <Expansionpanel />
       <Grid container spacing={3}>
-        <Grid item xs={4}>
+        <Grid item xs={4} style={{ overflow: "scroll", height: 500 }}>
           <Paper square className={classes.paper}>
             <Typography className={classes.text} variant="h5" gutterBottom>
               Inbox
@@ -151,7 +151,7 @@ export default function Jobs() {
             />
           </div>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={8} style={{ overflow: "scroll", height: 500 }}>
           <Paper style={{ textAlign: "center" }}>xs=8</Paper>
         </Grid>
       </Grid>
