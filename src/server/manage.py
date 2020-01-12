@@ -17,7 +17,6 @@ manager.add_command('db', MigrateCommand)
 
 @manager.command
 def run():
-    # import pdb; pdb.set_trace()
     """
     This method runs the flask app using manager command 
     after adding the routes using the methods in routes folder

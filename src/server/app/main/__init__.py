@@ -8,10 +8,12 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_admin import Admin
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
 from .settings import config_by_name
 from app.main.utils.LogSetup import LogSetup
 
+cors = CORS()
 logs = LogSetup()
 db = SQLAlchemy()
 admin = Admin()
@@ -58,7 +60,7 @@ def create_app(config_name):
     return app
 
 def add_extentions(app):
-    # api.init_app(app)
+    cors.init_app(app)
     db.init_app(app)
     logs.init_app(app)
     flask_bcrypt.init_app(app)

@@ -20,7 +20,7 @@ class User(db.Model):
     public_id = db.Column(db.String(50), unique=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
-    name = db.Column(db.String(150), nullable=False)
+    # name = db.Column(db.String(150), nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
     password_hash = db.Column(db.String(100))
 
