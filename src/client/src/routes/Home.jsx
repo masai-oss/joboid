@@ -6,7 +6,8 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: false
+      status: false,
+      token: null
     };
   }
 
@@ -17,8 +18,19 @@ class Home extends React.Component {
     });
   };
 
+  handleLogout = () => {
+    localStorage.removeItem("Authorization");
+    this.setState({
+      token: null
+    });
+    return <Redirect to="/" />;
+  };
+
   render() {
     const { status } = this.state;
+    this.state.token = localStorage.getItem("Authorization");
+    const { token } = this.state;
+
     return (
       <div style={{ height: 115, backgroundColor: "#4285F4", color: "white" }}>
         <div style={{ marginTop: 10 }}>
@@ -60,9 +72,15 @@ class Home extends React.Component {
             </Grid>
             <Grid item xs>
               <div style={{ textAlign: "center" }}>
-                <Button onClick={this.handleClick} variant="contained">
-                  Sign in
-                </Button>
+                {token == null ? (
+                  <Button onClick={this.handleClick} variant="contained">
+                    Sign in
+                  </Button>
+                ) : (
+                  <Button onClick={this.handleLogout} variant="contained">
+                    Logout
+                  </Button>
+                )}
               </div>
             </Grid>
           </Grid>
