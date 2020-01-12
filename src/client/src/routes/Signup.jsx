@@ -7,7 +7,8 @@ import {
   Typography,
   Grid
 } from "@material-ui/core/";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import axios from "axios";
 
 class Signin extends React.Component {
   constructor(props) {
@@ -28,7 +29,33 @@ class Signin extends React.Component {
 
   handleClick = e => {
     e.preventDefault();
-    // alert("Siggned up");
+    const { firstname, lastname, email, password } = this.state;
+    const username = `${firstname} ${lastname}`;
+
+    axios
+      .post("http://127.0.0.1:5000/signup", {
+        username,
+        email,
+        password
+      })
+      .then(res => {
+        console.log(res);
+        axios
+          .post("http://127.0.0.1:5000/login", {
+            email,
+            password
+          })
+          .then(resp => {
+            localStorage.setItem("Authorization", resp.data.Authorization);
+            return <Redirect to="/" />;
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {

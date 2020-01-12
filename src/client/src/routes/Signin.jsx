@@ -1,4 +1,7 @@
 import React from "react";
+import axios from "axios";
+import { Redirect, Link } from "react-router-dom";
+
 import {
   CssBaseline,
   Container,
@@ -7,7 +10,6 @@ import {
   Typography,
   Grid
 } from "@material-ui/core/";
-import { Link, Redirect } from "react-router-dom";
 
 class Signin extends React.Component {
   constructor(props) {
@@ -15,7 +17,8 @@ class Signin extends React.Component {
     this.state = {
       email: "",
       password: "",
-      status: false
+      status: false,
+      inValid: false
     };
   }
 
@@ -25,14 +28,34 @@ class Signin extends React.Component {
     });
   };
 
-  handleClick = () => {
-    this.setState({
-      status: true
-    });
+  handleClick = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    axios
+      .post("http://127.0.0.1:5000/login", {
+        email,
+        password
+      })
+      .then(res => {
+        if (res.status === 200) {
+          this.setState({
+            status: true
+          });
+          localStorage.setItem("Authorization", res.data.Authorization);
+        }
+        return <Redirect to="/" />;
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({
+          inValid: true
+        });
+      });
   };
 
   render() {
     const { email, password, status } = this.state;
+    const { inValid } = this.state;
     return (
       <Container component="main" maxWidth="xs" style={{ marginTop: 100 }}>
         <CssBaseline />
@@ -79,15 +102,20 @@ class Signin extends React.Component {
                 fullWidth
                 variant="contained"
                 color="primary"
-                onClick={this.handleClick}
+                onClick={e => this.handleClick(e)}
               >
                 Sign In
               </Button>
             </div>
+            {inValid ? (
+              <small style={{ color: "red" }}>
+                Email or Password does not match
+              </small>
+            ) : null}
             <Grid container justify="flex-end" style={{ marginTop: 20 }}>
               <Grid item>
                 <Link to="/signup" variant="body2">
-                  <i>Dont have an account? Sign Up</i>
+                  Dont have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
