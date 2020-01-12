@@ -7,7 +7,7 @@ import {
   Typography,
   Grid
 } from "@material-ui/core/";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class Signin extends React.Component {
@@ -47,7 +47,7 @@ class Signin extends React.Component {
           })
           .then(resp => {
             localStorage.setItem("Authorization", resp.data.Authorization);
-            return <Redirect to="/" />;
+            window.location.href = "/";
           })
           .catch(err => {
             console.log(err);

@@ -43,7 +43,7 @@ class Signin extends React.Component {
           });
           localStorage.setItem("Authorization", res.data.Authorization);
         }
-        return <Redirect to="/" />;
+        window.location.href = "/";
       })
       .catch(err => {
         console.log(err);
