@@ -22,7 +22,7 @@ def save_new_user(data):
             public_id=str(uuid.uuid4()),
             email=data['email'],
             username=data['username'],
-            name=data['name'],
+            # name=data['name'],
             admin=data.get('admin', False),
             password=data.get('password', None)
         )
