@@ -12,7 +12,7 @@ def get_all_job():
         dict, int: response object containing appropriate response based on the response from save changes,
                     http response code specifying the success of getting data from table
     """
-    all_job = db.session.query(JobDetails).limit(10).all()
+    all_job = db.session.query(JobDetails).limit(100).all()
     db.session.commit()
     items = list()
     for i in all_job:
