@@ -33,15 +33,13 @@ export default class jobs extends Component {
                 <div>
                   <h1>{e.job_title}</h1>
                   <h2>{e.location}</h2>
-                  <h3>{e.description}</h3>
+                  <h3>{e.job_type}</h3>
                   <h3>{e.payscale}</h3>
                   <h2>{e.date_posted}</h2>
-                  <a
-                    style={{ backgroundColor: "Yellow" }}
-                    href={e.parent_source}
-                  >
+                  <a style={{ backgroundColor: "Yellow" }} href={e.description}>
                     Apply Now
                   </a>
+                  <hr />
                 </div>
               );
             })

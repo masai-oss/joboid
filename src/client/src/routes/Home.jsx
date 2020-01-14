@@ -23,7 +23,7 @@ class Home extends React.Component {
     this.setState({
       token: null
     });
-    return <Redirect to="/" />;
+    return <Redirect t o="/" />;
   };
 
   render() {

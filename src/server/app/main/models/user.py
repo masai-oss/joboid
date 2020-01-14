@@ -1,5 +1,4 @@
 """ Model for user """
-
 from app.main import flask_bcrypt, db
 import datetime
 import jwt
@@ -64,11 +63,6 @@ class User(db.Model):
         """
         try:
             payload = jwt.decode(auth_token, key)
-            # is_blacklisted_token = BlacklistToken.check_blacklist(auth_token)
-            # if is_blacklisted_token:
-            #     return 'Token blacklisted. Please log in again.'
-            # else:
-            #     return payload['sub']
         except jwt.ExpiredSignatureError:
             return 'Signature expired. Please log in again.'
         except jwt.InvalidTokenError:

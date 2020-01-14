@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: a8d6f84dae69
+Revision ID: 1ac6e4341dd0
 Revises: 
-Create Date: 2020-01-14 15:39:59.166402
+Create Date: 2020-01-14 20:59:59.188729
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a8d6f84dae69'
+revision = '1ac6e4341dd0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,13 +21,14 @@ def upgrade():
     op.create_table('jobs',
     sa.Column('job_id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('job_title', sa.String(length=250), nullable=True),
-    sa.Column('description', sa.String(length=250), nullable=True),
+    sa.Column('company_name', sa.String(length=250), nullable=True),
     sa.Column('payscale', sa.String(length=250), nullable=True),
     sa.Column('location', sa.String(length=250), nullable=True),
+    sa.Column('parent_source', sa.String(length=250), nullable=True),
     sa.Column('job_type', sa.String(length=250), nullable=True),
     sa.Column('company_type', sa.String(length=250), nullable=True),
+    sa.Column('description', sa.String(length=250), nullable=True),
     sa.Column('date_posted', sa.String(length=250), nullable=True),
-    sa.Column('parent_source', sa.String(length=250), nullable=True),
     sa.Column('active', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('job_id')
     )
