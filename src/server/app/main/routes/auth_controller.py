@@ -3,7 +3,10 @@ from flask_restful import Resource
 from ..services.user_service import save_new_user, get_all_users
 import requests
 from app.main.services.auth_helper import Auth
+from ..services.show_jobs import get_all_job
+from ..services.filter_title import filter_job
 from app.main.utils.oauth_utils import github, oauth, facebook, g
+from ..services.filter_company import filter_company
 
 class UserSignUp(Resource):
     """
@@ -37,6 +40,26 @@ class LogoutAPI(Resource):
         auth_header = request.headers.get('Authorization')
         return Auth.logout_user(data=auth_header)
 
+
+class JobDetails(Resource):
+    def get(self):
+        return get_all_job()
+
+class FilterCompany(Resource):
+    def post(self):
+        data = request.json
+        return filter_company(data=data)
+
+class FilterTitle(Resource):
+    """
+    [summary]
+    Args:
+        Resource ([type]): [description]
+    """
+    def post(self):
+        """Creates a new Student """
+        data = request.json
+        return filter_job(data=data)
 
 class GithubAuthorize(Resource):
     @classmethod

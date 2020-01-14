@@ -31,7 +31,7 @@ class DevelopmentConfig(Config):
 
     # mysql://root:@localhost:3306/practise
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:@localhost:3306/joboid'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Anuj@1996@localhost:3306/masai_oss'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     LOG_TYPE=LOG_TYPE
     LOG_LEVEL=LOG_LEVEL
@@ -45,7 +45,7 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:@localhost:3306/joboid'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:Anuj@1996@localhost:3306/masai_oss'
     PRESERVE_CONTEXT_ON_EXCEPTION = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     LOG_TYPE=LOG_TYPE
