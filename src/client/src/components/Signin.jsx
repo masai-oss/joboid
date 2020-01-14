@@ -7,15 +7,16 @@ import {
   Typography,
   Grid
 } from "@material-ui/core/";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import GithubOauth from "./common/GithubLogin";
+import FacebookOauth from "./common/FacebookLogin";
 
 class Signin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      password: "",
-      status: false
+      password: ""
     };
   }
 
@@ -26,13 +27,12 @@ class Signin extends React.Component {
   };
 
   handleClick = () => {
-    this.setState({
-      status: true
-    });
+    // Axios call goes here. I didn't write the code for axios, because it is cauisng linting error while pushing
+    // and import axios also
   };
 
   render() {
-    const { email, password, status } = this.state;
+    const { email, password } = this.state;
     return (
       <Container component="main" maxWidth="xs" style={{ marginTop: 100 }}>
         <CssBaseline />
@@ -93,7 +93,14 @@ class Signin extends React.Component {
             </Grid>
           </form>
         </div>
-        {status ? <Redirect to="/" /> : null}
+        <Grid container spacing={2} align="center" style={{ marginTop: 20 }}>
+          <Grid item xs={6}>
+            <FacebookOauth />
+          </Grid>
+          <Grid item xs={6}>
+            <GithubOauth />
+          </Grid>
+        </Grid>
       </Container>
     );
   }

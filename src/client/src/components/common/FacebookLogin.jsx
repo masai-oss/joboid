@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
+// import TiSocialFacebookSocial from "react-icons/lib/ti/social-facebook-circular";
 
 class FacebookOauth extends Component {
   facebookResponse = () => {};
@@ -12,6 +13,8 @@ class FacebookOauth extends Component {
           autoLoad={false}
           fields="name,email,picture"
           callback={this.facebookResponse}
+          cssClass="my-facebook-button-class"
+          // icon={<TiSocialFacebookSocial/>}
         />
       </div>
     );

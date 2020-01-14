@@ -1,6 +1,7 @@
 import React from "react";
 import { TextField, Grid, Button } from "@material-ui/core/";
 import { Link, Redirect } from "react-router-dom";
+import Joboid01 from "../images/Joboid-white.svg";
 
 class Home extends React.Component {
   constructor(props) {
@@ -9,6 +10,12 @@ class Home extends React.Component {
       status: false
     };
   }
+
+  componentDidMount = () => {};
+
+  onSearch = () => {
+    document.getElementById("outlined-search").style.backgroundColor = "white";
+  };
 
   handleClick = e => {
     e.preventDefault();
@@ -20,12 +27,19 @@ class Home extends React.Component {
   render() {
     const { status } = this.state;
     return (
-      <div style={{ height: 115, backgroundColor: "#4285F4", color: "white" }}>
+      <div
+        style={{ height: 115, backgroundColor: "#4285F4", color: "#0b3e20" }}
+      >
         <div style={{ marginTop: 10 }}>
           <Grid container spacing={3}>
             <Grid item xs>
-              <div style={{ textAlign: "center", fontSize: 30 }}>
-                <b>Google</b>
+              <div style={{ textAlign: "center" }}>
+                <img
+                  id="joboid-logo"
+                  src={Joboid01}
+                  style={{ height: 60, width: 200 }}
+                  alt="joboid_logo"
+                />
               </div>
             </Grid>
             <Grid item xs={6}>
@@ -35,24 +49,31 @@ class Home extends React.Component {
                   id="outlined-search"
                   label="Search"
                   type="search"
-                  variant="outlined"
+                  variant="filled"
+                  onClick={this.onSearch}
                 />
               </div>
               <div style={{ textAlign: "center", marginTop: 10 }}>
                 <Grid container spacing={3}>
                   <Grid item xs>
                     <Button>
-                      <Link to="/">JOBS</Link>
+                      <Link to="/" style={{ color: "white" }}>
+                        <b>JOBS</b>
+                      </Link>
                     </Button>
                   </Grid>
                   <Grid item xs>
                     <Button>
-                      <Link to="/saved">SAVED</Link>
+                      <Link to="/saved" style={{ color: "white" }}>
+                        <b>SAVED</b>
+                      </Link>
                     </Button>
                   </Grid>
                   <Grid item xs>
                     <Button>
-                      <Link to="/alerts">ALERTS</Link>
+                      <Link to="/alerts" style={{ color: "white" }}>
+                        <b>ALERTS</b>
+                      </Link>
                     </Button>
                   </Grid>
                 </Grid>
@@ -60,7 +81,11 @@ class Home extends React.Component {
             </Grid>
             <Grid item xs>
               <div style={{ textAlign: "center" }}>
-                <Button onClick={this.handleClick} variant="contained">
+                <Button
+                  onClick={this.handleClick}
+                  variant="contained"
+                  size="small"
+                >
                   Sign in
                 </Button>
               </div>

@@ -8,13 +8,14 @@ import {
   Grid
 } from "@material-ui/core/";
 import { Link } from "react-router-dom";
+import GithubOauth from "./common/GithubLogin";
+import FacebookOauth from "./common/FacebookLogin";
 
 class Signin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstname: "",
-      lastname: "",
+      username: "",
       email: "",
       password: ""
     };
@@ -32,7 +33,7 @@ class Signin extends React.Component {
   };
 
   render() {
-    const { firstname, lastname, email, password } = this.state;
+    const { username, email, password } = this.state;
     return (
       <Container component="main" maxWidth="xs" style={{ marginTop: 100 }}>
         <CssBaseline />
@@ -48,31 +49,18 @@ class Signin extends React.Component {
           </Typography>
           <form style={{ width: "100%" }} noValidate>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
-                  autoComplete="fname"
-                  name="firstname"
-                  value={firstname}
+                  autoComplete="uname"
+                  name="username"
+                  value={username}
                   onChange={this.handleChange}
                   variant="outlined"
                   required
                   fullWidth
-                  id="firstname"
-                  label="First Name"
+                  id="username"
+                  label="User Name"
                   autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastname"
-                  label="Last Name"
-                  name="lastname"
-                  value={lastname}
-                  onChange={this.handleChange}
-                  autoComplete="lname"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -124,6 +112,15 @@ class Signin extends React.Component {
             </Grid>
           </form>
         </div>
+        {/* <GithubOauth /> */}
+        <Grid container spacing={2} align="center" style={{ marginTop: 20 }}>
+          <Grid item xs={6}>
+            <FacebookOauth />
+          </Grid>
+          <Grid item xs={6}>
+            <GithubOauth />
+          </Grid>
+        </Grid>
       </Container>
     );
   }
