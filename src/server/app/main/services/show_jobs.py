@@ -16,6 +16,6 @@ def get_all_job():
     db.session.commit()
     items = list()
     for i in all_job:
-        items.append({"job_id": i.job_id, "job_title": i.job_title ,"description":i.description, "payscale" : i.payscale, "location" : i.location, "job_type" : i.job_type, "company_type" : i.company_type, "date_posted" : i.date_posted, "parent_source" : i.parent_source , "active" : i.active})
+        items.append({"job_title": i.job_title ,"description":i.description, "payscale" : i.payscale, "location" : i.location, "job_type" : i.job_type, "company_type" : i.company_type, "date_posted" : i.date_posted, "parent_source" : i.parent_source , "active" : i.active})
     response_object = jsonify({"data": items})
     return (response_object)
