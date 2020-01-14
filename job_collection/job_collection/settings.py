@@ -29,6 +29,8 @@ NEWSPIDER_MODULE = "job_collection.spiders"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'job_collection (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+# USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -67,7 +69,15 @@ ROBOTSTXT_OBEY = False
 # DOWNLOADER_MIDDLEWARES = {
 #    'job_collection.middlewares.JobCollectionDownloaderMiddleware': 543,
 # }
-
+# DOWNLOADER_MIDDLEWARES = {
+#     'scrapy_beautifulsoup.middleware.BeautifulSoupMiddleware': 400
+# }
+# DOWNLOADER_MIDDLEWARES = {
+#     # ...
+#     'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
+#     'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
+#     # ...
+# }
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
 # EXTENSIONS = {
@@ -92,7 +102,7 @@ AUTOTHROTTLE_MAX_DELAY = 60
 # each remote server
 AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
-AUTOTHROTTLE_DEBUG = False
+AUTOTHROTTLE_DEBUG = True
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
