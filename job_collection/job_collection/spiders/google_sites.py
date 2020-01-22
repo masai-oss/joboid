@@ -10,19 +10,20 @@ class CrawlGoogle(scrapy.Spider):
     page_number = 0
     start_urls = [
         'https://www.google.com/search?&q=site:recruiterbox.com',
-        'https://www.google.com/search?&q=site:lever.co'
+        'https://www.google.com/search?&q=site:lever.co',
     ]
 
     def parse(self, response):
         items = GoogleCollection()
-        selection = Selector(response)        
+        selection = Selector(response)
         next_page = response.xpath('/html/body/div/footer/div[1]/div/div/a/@href').extract_first()
         next_button = selection.xpath('//span[contains(text(), ">")]')
 
         if next_button:
             ref_links = response.xpath('//a[contains(@href, "url?")]/@href').extract()
+            print(ref_links)
             for link in ref_links:
-                if 'google' not in urlparse(urlparse(link).query[2:]).netloc:
+	        if 'google' not in urlparse(urlparse(link).query[2:]).netloc:
                     items['url'] = urlparse(link).query[2:]
                     items['domain'] = urlparse(link).netloc.split('.')[1]
                     yield items
@@ -31,5 +32,5 @@ class CrawlGoogle(scrapy.Spider):
         if next_page is not None and CrawlGoogle.page_number < 32:
             CrawlGoogle.page_count += 10
             CrawlGoogle.page_number += 1
-            go_next = 'https://www.google.com/search?q=site:recruiterbox.com&start='+str(CrawlGoogle.page_count)
+            go_next = 'https://www.google.com/search?{}&start='.format(urlparse(response.url).query)+str(CrawlGoogle.page_count)
             yield response.follow(go_next, callback = self.parse)

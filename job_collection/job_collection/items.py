@@ -9,9 +9,16 @@ import scrapy
 
 
 class JobCollectionItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    job_title = scrapy.Field()
+    company_name = scrapy.Field()
+    description = scrapy.Field()
+    payscale = scrapy.Field()
+    location = scrapy.Field()
+    job_type = scrapy.Field()
+    company_type = scrapy.Field()
+    date_posted = scrapy.Field()
+    parent_source = scrapy.Field()
+    active = scrapy.Field()
 
 class GoogleCollection(scrapy.Item):
     url = scrapy.Field()
