@@ -56,4 +56,3 @@ class Auth:
                 'message': 'Provide a valid auth token.'
             }
             return response_object, 403
-
