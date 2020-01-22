@@ -31,6 +31,7 @@ export default class jobs extends Component {
           ? data.map(e => {
               return (
                 <div>
+                  <h1>{e.job_id}</h1>
                   <h1>{e.job_title}</h1>
                   <h2>{e.location}</h2>
                   <h3>{e.job_type}</h3>
